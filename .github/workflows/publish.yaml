@@ -19,9 +19,15 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      # Explicit build step (instead of relying on "prepare")
       - name: Build package
         run: bun run build
+
+      # Create .npmrc dynamically so token is used only in CI
+      - name: Configure npm auth
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > .npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to npm
         run: bun publish --access public
