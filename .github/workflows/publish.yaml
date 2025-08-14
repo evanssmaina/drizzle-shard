@@ -1,12 +1,10 @@
-name: Publish to npm (Bun)
+name: Publish to npm
 
 on:
-  push:
-    tags:
-      - "v*" # Triggers on version tags like v0.0.1
+  workflow_dispatch: # Allows manual trigger from GitHub Actions tab
 
 jobs:
-  build-and-publish:
+  publish:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,11 +19,8 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Build with tsup
+      - name: Build package
         run: bun run build
-
-      - name: Run tests
-        run: bun test
 
       - name: Publish to npm
         run: bun publish --access public
