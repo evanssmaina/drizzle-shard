@@ -17,8 +17,7 @@
     "test": "vitest",
     "test:watch": "vitest --watch",
     "lint": "biome lint .",
-    "format": "biome format . --write",
-    "prepare": "tsup"
+    "format": "biome format . --write"
   },
 	"keywords": [
 		"drizzle",
