@@ -19,6 +19,7 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
+      # Explicit build step (instead of relying on "prepare")
       - name: Build package
         run: bun run build
 
