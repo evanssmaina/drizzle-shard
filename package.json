@@ -1,0 +1,51 @@
+{
+	"name": "drizzle-shard",
+	"description": "A TypeScript sharding manager for Drizzle ORM with built-in routing, replica support, and migrations.",
+	"version": "0.1.0",
+	"author": "Evans Maina <evanssmaina@outlook.com>",
+	"license": "MIT",
+	"type": "module",
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"files": [
+		"dist"
+	],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "lint": "biome lint .",
+    "format": "biome format . --write",
+    "prepare": "tsup"
+  },
+	"keywords": [
+		"drizzle",
+		"orm",
+		"sharding",
+		"database",
+		"typescript",
+		"nodejs",
+		"postgres",
+		"mysql"
+	],
+	"devDependencies": {
+		"@biomejs/biome": "2.2.0",
+		"@types/bun": "latest",
+		"@types/node": "^24.2.1",
+		"tsup": "^8.5.0",
+		"tsx": "^4.20.4",
+		"vitest": "^3.2.4"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"dependencies": {
+		"@types/pg": "^8.15.5",
+		"drizzle-kit": "^0.31.4",
+		"drizzle-orm": "^0.44.4",
+		"pg": "^8.16.3",
+		"redis": "^5.8.1"
+	}
+}

@@ -1,0 +1,33 @@
+name: Publish to npm (Bun)
+
+on:
+  push:
+    tags:
+      - "v*" # Triggers on version tags like v0.0.1
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build with tsup
+        run: bun run build
+
+      - name: Run tests
+        run: bun test
+
+      - name: Publish to npm
+        run: bun publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
